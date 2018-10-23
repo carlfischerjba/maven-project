@@ -27,13 +27,13 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat '"C:/Program Files/PuTTY/pscp.exe" -i "C:/Users/carlfischer/Documents/jenkins-tutorial/tomcat-demo.ppk" **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps'
+                        bat '"C:/Program Files/PuTTY/pscp.exe" -i "C:/Users/carlfischer/Documents/jenkins-tutorial/tomcat-demo.ppk" webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps'
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat '"C:/Program Files/PuTTY/pscp.exe" -i "C:/Users/carlfischer/Documents/jenkins-tutorial/tomcat-demo.ppk" **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps'
+                        bat '"C:/Program Files/PuTTY/pscp.exe" -i "C:/Users/carlfischer/Documents/jenkins-tutorial/tomcat-demo.ppk" webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps'
                     }
                 }
             }
